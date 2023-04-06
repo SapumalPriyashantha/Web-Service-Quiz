@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome, {{ user.name }}!</h2>
+      <h3>Your current loan amount is: ${{ user.loan_amount }}</h3>
+      <form action="/request_loan" method="post">
+        <label for="loan_amount">Request a new loan:</label>
+        <input type="number" id="loan_amount" name="loan_amount" min="0" max="{{ user.max_loan_amount }}" required>
+        <button type="submit">Submit</button>
+      </form>
+      <h3>Pending loan requests:</h3>
+      <ul>
+        {% for loan_request in pending_loan_requests %}
+        <li>{{ loan_request.requested_by }} is requesting a loan of ${{ loan_request.amount }}. <a href="/approve_loan/{{ loan_request.id }}">Approve</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
+
+
+
+
+

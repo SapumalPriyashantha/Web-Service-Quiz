@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote on Loan Request</title>
+</head>
+<body>
+    <h1>Vote on Loan Request</h1>
+    <h2>Loan Amount: ${{ loan_amount }}</h2>
+    <form method="POST" action="{{ url_for('vote_loan', loan_id=loan_id) }}">
+        <label for="vote">Vote:</label>
+        <select id="vote" name="vote" required>
+            <option value="">--Please choose an option--</option>
+            <option value="approve">Approve</option>
+            <option value="reject">Reject</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
